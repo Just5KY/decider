@@ -34,28 +34,20 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      
-      - name: Log in to the Container registry
-        uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GIT_TOKEN }}
-      
+
       - name: Extract metadata (tags, labels) for Docker
         id: meta
         uses: docker/metadata-action@05d22bf31770de02e20c67c70365453e00227f61
         with:
           images: |
-            justsky/decider:db
-            ghcr.io/just5ky/decider:db
-      
+            justsky/justsky/decider:db
+
       - name: Build and push Docker images
         uses: docker/build-push-action@v3
         with:
-          context: ./docker/db
+          context: "{{defaultContext}}:docker/db"
           file: Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
-          #tags: ${{ steps.meta.outputs.tags }}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/decider:db
           labels: ${{ steps.meta.outputs.labels }}
