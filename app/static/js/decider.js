@@ -1,3 +1,11 @@
+$(document).ready(function () {
+    const needsAWelcome = localStorage.getItem('has-seen-welcome') === null;
+    if (needsAWelcome) {
+        const welcomeModal = new bootstrap.Modal(document.getElementById('welcomeModal'));
+        welcomeModal.show();
+    }
+});
+
 // broofa's UUIDv4 generator
 // https://stackoverflow.com/questions/105034/how-do-i-create-a-guid-uuid/2117523#2117523
 function uuidv4() {
@@ -143,13 +151,6 @@ function bracketizeCrumbIDs(crumbs) {
     return crumbs.map(({ url, name }) => ({ url, name: name.replaceAll('(', '[').replaceAll(')', ']') }));
 }
 
-function strongBluifyLinks(html) {
-    const div = $('<div></div>');
-    div.html(html);
-    div.find('a').addClass('link-strong-blue');
-    return div.html();
-}
-
 document.addEventListener('alpine:init', function () {
     Alpine.store('attackIDHelper', {
         loadedVersion: null,
@@ -275,6 +276,7 @@ document.addEventListener('alpine:init', function () {
         },
         onClick() {
             document.body.scrollTop = document.documentElement.scrollTop = 0;
+            document.getElementById('skip-to-main-content').focus();
         },
     }));
 
@@ -555,7 +557,7 @@ document.addEventListener('alpine:init', function () {
 
                 coocs.forEach((cooc) => {
                     // displayed when expanded
-                    cooc.tech_desc = strongBluifyLinks(cooc.tech_desc);
+                    // cooc.tech_desc
 
                     // displayed when collapsed (prevents tabbing)
                     cooc.short_desc = $(cooc.tech_desc).text();
@@ -1138,7 +1140,7 @@ document.addEventListener('alpine:init', function () {
 
                     coocs.forEach((cooc) => {
                         // displayed when expanded
-                        cooc.tech_desc = strongBluifyLinks(cooc.tech_desc);
+                        // cooc.tech_desc
 
                         // displayed when collapsed (prevents tabbing)
                         cooc.short_desc = $(cooc.tech_desc).text();

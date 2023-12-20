@@ -3,9 +3,56 @@
     display: none !important;
 }
 
+/* ----------------------------------------------------------------------------------------------------------------- */
+/* Font: Source Sans Pro */
+
+@font-face {
+    font-family: SourceSansPro;
+    src: url('/static/font/source-sans-pro/SourceSansPro-Regular.ttf');
+}
+@font-face {
+    font-family: SourceSansPro;
+    src: url('/static/font/source-sans-pro/SourceSansPro-Bold.ttf');
+    font-weight: bold;
+}
+@font-face {
+    font-family: SourceSansPro;
+    src: url('/static/font/source-sans-pro/SourceSansPro-Italic.ttf');
+    font-style: italic;
+}
+@font-face {
+    font-family: SourceSansPro;
+    src: url('/static/font/source-sans-pro/SourceSansPro-BoldItalic.ttf');
+    font-weight: bold;
+    font-style: italic;
+}
+@font-face {
+    font-family: SourceSansPro;
+    src: url('/static/font/source-sans-pro/SourceSansPro-Light.ttf');
+    font-weight: 300;
+}
+@font-face {
+    font-family: SourceSansPro;
+    src: url('/static/font/source-sans-pro/SourceSansPro-LightItalic.ttf');
+    font-style: italic;
+    font-weight: 300;
+}
+
+body {
+    font-family: SourceSansPro;
+}
+
+/* ----------------------------------------------------------------------------------------------------------------- */
+
+#skip-to-main-content {
+    width: fit-content;
+    padding: 0;
+    margin: 4px;
+}
+
 #navbar {
     padding: 0.25rem 0;
-    background-color: var(--cisa-nav-blue);
+    background-color: var(--dhs-blue);
 }
 
 #navCisaLogo {
@@ -119,18 +166,163 @@ body {
 
 #deciderFooter {
     color: white;
-    background-color: var(--cisa-nav-blue);
+    background-color: var(--dhs-blue);
 }
 
 :root {
+    /* ATT&CK links */
     --attack-orange: #b0371c; /* adjusted for contrast on gray */
     --attack-orange-alt: #cc0000;
 
+    /* higher contrast links */
     --strong-blue: #0000aa;
     --strong-blue-alt: #0000ff;
 
-    --cisa-nav-blue: #005288;
-    --cisa-nav-blue-dark: #003e66;
+    /* higher contrast code */
+    --strong-code: #900022;
+
+    /* primary */
+    --dhs-blue: #005288;
+    --dhs-blue-rgb: 0,82,136;
+    --dhs-gray: #c0c2c4;
+    --dhs-dark-gray: #5a5b5d;
+    --dhs-dark-gray-rgb: 90,91,93;
+
+    /* secondary */
+    --dhs-red: #c41230;
+    --dhs-light-blue: #0078ae;
+    --dhs-green: #5e9732;
+
+    /* color wheel */
+    --dhs-gray-20: #edeeee;
+    --dhs-blue-60: #003e67;
+    --dhs-blue-60-rgb: 0,62,103;
+    --dhs-red-60: #950e24;
+    --dhs-red-60-rgb: 149,14,36;
+    --dhs-green-60: #477326;
+    --dhs-green-70: #314f1a;
+    --dhs-green-70-rgb: 49,79,26;
+    --dhs-dark-gray-60: #444547;
+    --dhs-dark-gray-60-rgb: 68,69,71;
+}
+
+/* Input | DHS Blue Focus */
+.form-control:focus {
+    color: var(--bs-body-color);
+    background-color: var(--bs-body-bg);
+    border-color: var(--dhs-blue);
+    outline: 0;
+    box-shadow: 0 0 0 .3rem rgba(var(--dhs-blue-rgb), .5);
+}
+
+/* Navbar - Cleaner mini search focus */
+#navbar .form-control:focus {
+    color: var(--bs-body-color);
+    background-color: var(--bs-body-bg);
+    border-color: #00ffff;
+    outline: 0;
+    box-shadow: 0 0 0 .25rem #00ffffa1;
+}
+
+/* Navbar - Cleaner button focus */
+#navbar .btn {
+    --bs-btn-focus-shadow-rgb: 0, 255, 255;
+}
+
+/* Select | DHS Blue Focus */
+.form-select:focus {
+    border-color: var(--dhs-blue);
+    outline: 0;
+    box-shadow: 0 0 0 .25rem rgba(var(--dhs-blue-rgb), .25);
+}
+
+/* BG Secondary | DHS Dark Gray */
+.text-bg-secondary {
+    color: #fff !important;
+    background-color: RGBA(var(--dhs-dark-gray-rgb), var(--bs-bg-opacity, 1)) !important;
+}
+
+/* Check | DHS Blue */
+.form-check-input:checked {
+    background-color: var(--dhs-blue);
+    border-color: var(--dhs-blue);
+}
+.form-check-input:focus {
+    border-color: var(--dhs-blue);
+    outline: 0;
+    box-shadow: 0 0 0 .25rem rgba(var(--dhs-blue-rgb), .25);
+}
+
+/* Button Secondary | DHS Gray (Dark) */
+.btn-secondary {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: var(--dhs-dark-gray);
+    --bs-btn-border-color: var(--dhs-dark-gray);
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: var(--dhs-dark-gray-60);
+    --bs-btn-hover-border-color: var(--dhs-dark-gray-60);
+    --bs-btn-focus-shadow-rgb: var(--dhs-dark-gray-60-rgb);
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: var(--dhs-dark-gray-60);
+    --bs-btn-active-border-color: var(--dhs-dark-gray-60);
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: var(--dhs-dark-gray);
+    --bs-btn-disabled-border-color: var(--dhs-dark-gray);
+}
+
+/* Button Primary | DHS Blue */
+.btn-primary {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: var(--dhs-blue);
+    --bs-btn-border-color: var(--dhs-blue);
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: var(--dhs-blue-60);
+    --bs-btn-hover-border-color: var(--dhs-blue-60);
+    --bs-btn-focus-shadow-rgb: var(--dhs-blue-60-rgb);
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: var(--dhs-blue-60);
+    --bs-btn-active-border-color: var(--dhs-blue-60);
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: var(--dhs-blue);
+    --bs-btn-disabled-border-color: var(--dhs-blue);
+}
+
+/* Button Success | DHS Green (60) */
+.btn-success {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: var(--dhs-green-60);
+    --bs-btn-border-color: var(--dhs-green-60);
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: var(--dhs-green-70);
+    --bs-btn-hover-border-color: var(--dhs-green-70);
+    --bs-btn-focus-shadow-rgb: var(--dhs-green-70-rgb);
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: var(--dhs-green-70);
+    --bs-btn-active-border-color: var(--dhs-green-70);
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: var(--dhs-green-60);
+    --bs-btn-disabled-border-color: var(--dhs-green-60);
+}
+
+/* Button Danger | DHS Red */
+.btn-danger {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: var(--dhs-red);
+    --bs-btn-border-color: var(--dhs-red);
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: var(--dhs-red-60);
+    --bs-btn-hover-border-color: var(--dhs-red-60);
+    --bs-btn-focus-shadow-rgb: var(--dhs-red-60-rgb);
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: var(--dhs-red-60);
+    --bs-btn-active-border-color: var(--dhs-red-60);
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: var(--dhs-red);
+    --bs-btn-disabled-border-color: var(--dhs-red);
 }
 
 mark {
@@ -149,12 +341,12 @@ mark {
     --bs-card-border-radius: 0;
 
     --bs-card-cap-color: black;
-    --bs-card-cap-bg: #eee;
+    --bs-card-cap-bg: var(--dhs-gray-20);
 
-    --bs-card-border-color: #ccc;
+    --bs-card-border-color: var(--dhs-gray);
 
     --bs-card-color: white;
-    --bs-card-bg: var(--cisa-nav-blue-dark);
+    --bs-card-bg: var(--dhs-blue-60);
 }
 .answer-card .card-header {
     padding: calc(var(--bs-card-cap-padding-y) * 0.4) calc(var(--bs-card-cap-padding-x) * 0.4);
@@ -182,6 +374,16 @@ mark {
     text-decoration-color: var(--attack-orange-alt) !important;
 }
 
+/* <code> contrast adjust */
+.strong-code {
+    color: var(--strong-code) !important;
+}
+
+.has-strong-codes code {
+    color: var(--strong-code) !important;
+}
+
+/* <a> contrast adjust */
 .link-strong-blue {
     color: var(--strong-blue) !important;
     -webkit-text-decoration-color: var(--strong-blue) !important;
@@ -189,6 +391,18 @@ mark {
 }
 .link-strong-blue:hover,
 .link-strong-blue:focus {
+    color: var(--strong-blue-alt) !important;
+    -webkit-text-decoration-color: var(--strong-blue-alt) !important;
+    text-decoration-color: var(--strong-blue-alt) !important;
+}
+
+.has-strong-blue-links a {
+    color: var(--strong-blue) !important;
+    -webkit-text-decoration-color: var(--strong-blue) !important;
+    text-decoration-color: var(--strong-blue) !important;
+}
+.has-strong-blue-links a:hover,
+.has-strong-blue-links a:focus {
     color: var(--strong-blue-alt) !important;
     -webkit-text-decoration-color: var(--strong-blue-alt) !important;
     text-decoration-color: var(--strong-blue-alt) !important;
@@ -247,7 +461,7 @@ mark {
 }
 
 #shoppingCart .offcanvas-header {
-    background-color: black;
+    background-color: var(--dhs-blue);
     border-bottom: 2px solid var(--bs-border-color);
     color: white;
 }
@@ -282,17 +496,16 @@ span.redtext {
 }
 
 /* ----------------------------------------------------------------------------------------------------------------- */
-/* Classification Banner Styling */
+/* Classification Banner Styling (modified from original) */
 /* https://codepen.io/kvangrae/pen/EWJBpo */
 
 .classification-banner:before,
 .classification-banner:not([data-single-banner]):after {
     display: block;
-    background-color: #5e5e5e;
+    background-color: #505050;
     color: #fff;
     font-weight: bold;
     text-align: center;
-    text-shadow: 1px 1px 0 #444;
     content: attr(data-classification);
 }
 .classification-banner[data-banner-content]:before,
@@ -301,19 +514,20 @@ span.redtext {
 }
 .classification-banner[data-classification^='U']:before,
 .classification-banner[data-classification^='U']:after {
-    background-color: #5cb85c;
+    background-color: #08680e;
 }
 .classification-banner[data-classification^='C']:before,
 .classification-banner[data-classification^='C']:after {
-    background-color: #286090;
+    background-color: #175b96;
 }
 .classification-banner[data-classification^='S']:before,
 .classification-banner[data-classification^='S']:after {
-    background-color: #d9534f;
+    background-color: #b40a04;
 }
 .classification-banner[data-classification^='T']:before,
 .classification-banner[data-classification^='T']:after {
     background-color: #f0ad4e;
+    color: #000;
 }
 .classification-banner[data-font-size-small]:before,
 .classification-banner[data-font-size-small]:not([data-single-banner]):after {
@@ -324,8 +538,8 @@ span.redtext {
     font-size: 1.33333333em;
 }
 body.classification-banner {
-    padding-top: 1.17em;
-    padding-bottom: 1.17em;
+    padding-top: 1.5em;
+    padding-bottom: 1.5em;
 }
 body.classification-banner:before,
 body.classification-banner:not([data-single-banner]):after {
